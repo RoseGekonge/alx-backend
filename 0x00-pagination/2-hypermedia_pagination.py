@@ -52,6 +52,9 @@ class Server:
         return self.dataset()[indexRange[0]:indexRange[1]]
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
+        """
+        returns a dictionary
+        """
         keys = ["page_size", "page", "data", "next_page", "prev_page", "total_pages"]
 
         # Initialize dictionary with keys and None as values

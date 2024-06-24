@@ -40,6 +40,9 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> dict:
+        """
+        returns a dictionary
+        """
         keys = ["index", "data", "page_size", "next_index"]
         hyper_dict = {key: None for key in keys}
 
