@@ -65,10 +65,13 @@ class Server:
         empty_dict["page_size"] = page_size
         empty_dict["page"] = page
         empty_dict["prev_page"] = page- 1
+        if empty_dict["prev_page"] < 1:
+            empty_dict["prev_page"] = None
         empty_dict["next_page"] = page + 1
         if empty_dict["next_page"] * page_size > len(self.__dataset):
             empty_dict["next_page"] = None
         empty_dict["total_pages"] = (len(data_set) + page_size - 1) // page_size
         empty_dict["data"] = self.get_page(page, page_size)
+        empty_dict["page_size"] = len(empty_dict["data"])
 
         return empty_dict
