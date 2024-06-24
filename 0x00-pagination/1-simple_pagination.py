@@ -11,9 +11,11 @@ def index_range(page, page_size):
     '''
         Returns the range of indexes for a given page.
     '''
-    start = (page - 1) * page_size
-    end = page * page_size
-    return start, end
+    start_index = (page - 1) * page_size
+    end_index = page * page_size
+
+    indices = tuple([start_index, end_index])
+    return indices
 
 
 class Server:
