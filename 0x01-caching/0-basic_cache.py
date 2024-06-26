@@ -1,39 +1,53 @@
-#!/usr/bin/python3
-""" BaseCaching module
+#!/usr/bin/env python3
+"""Create a class BasicCache that inherits from
+BaseCaching and is a caching system:
+
+You must use self.cache_data - dictionary from
+the parent class BaseCaching
+This caching system doesn’t have limit
+def put(self, key, item):
+Must assign to the dictionary self.cache_data the
+item value for the key key.
+If key or item is None, this method should not do
+anything.
+def get(self, key):
+Must return the value in self.cache_data linked
+to key.
+If key is None or if the key doesn’t exist in
+self.cache_data, return None.
 """
 
-class BasicCache():
-    """ BaseCaching defines:
-      - constants of your caching system
-      - where your data are stored (in a dictionary)
+
+BaseCaching = __import__('base_caching').BaseCaching
+
+
+class BasicCache(BaseCaching):
+    """_summary_
     """
-    MAX_ITEMS = 4
 
     def __init__(self):
-        """ Initiliaze
+        """_summary_
         """
-        self.cache_data = {}
-
-    def print_cache(self):
-        """ Print the cache
-        """
-        print("Current cache:")
-        for key in sorted(self.cache_data.keys()):
-            print("{}: {}".format(key, self.cache_data.get(key)))
+        super().__init__()
 
     def put(self, key, item):
-        """ Add an item in the cache
+        """_summary_
+
+        Args:
+                key (_type_): _description_
+                item (_type_): _description_
         """
-        if item is None or key is None:
-            return
-        self.cache_data[key] = item
+        if key is None or item is None:
+            pass
+        else:
+            self.cache_data[key] = item
 
     def get(self, key):
-        """ Get an item by key
+        """return the value in self.cache_data linked to key
+
+        Args:
+                key (_type_): _description_
         """
-        if key is None:
+        if key is None or key not in self.cache_data.keys():
             return None
-        if key not in self.cache_data:
-            return None
-        else:
-            return self.cache_data[key]
+        return self.cache_data.get(key)
